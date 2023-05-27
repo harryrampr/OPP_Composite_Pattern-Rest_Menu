@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    container_name: ${DB_CONTAINER_NAME}
+    volumes:
+      - "./db-dumps:/docker-entrypoint-initdb.d"
+    ports:
+      - ${DB_HOST_PORT}:3306
+    networks:
+      containers_network:
+
+  www:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: www.Dockerfile
+    container_name: ${SERVER_CONTAINER_NAME}
+    volumes:
+      - "./app:${SERVER_DEVMENT_DIR}/app"
+      - "./composer.json:${SERVER_DEVMENT_DIR}/composer.json"
+    ports:
+      - ${SERVER_HTTP_HOST_PORT}:80
+      - ${SERVER_HTTPS_HOST_PORT}:443
+    networks:
+      containers_network:
+
+networks:
+  containers_network:
+    driver: bridge
