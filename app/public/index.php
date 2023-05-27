@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use App\Helpers;
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../', '.env.app');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../', 'app.env');
 $dotenv->safeLoad();
 
 echo '<h1>Hello World!</h1>';

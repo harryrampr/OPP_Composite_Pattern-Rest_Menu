@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../', '.env.app');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../', 'app.env');
 $dotenv->safeLoad();
 
 $mysqli = new mysqli(

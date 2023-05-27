@@ -56,11 +56,11 @@ WORKDIR ${SERVER_DEVMENT_DIR}
 # Copy development files
 COPY --chown=devment:devment --chmod=0775 ./app ${SERVER_DEVMENT_DIR}/app
 COPY --chown=devment:devment --chmod=0775 ./composer.json .
-COPY --chown=devment:devment --chmod=0775 ./.env.app .
+COPY --chown=devment:devment --chmod=0775 app.env .
 
 # Update enviroment files on container
-RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_HOST','${DATABASE_HOST}','${SERVER_DEVMENT_DIR}/.env.app'); exit(0);"
-RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_PORT','${DATABASE_PORT}','${SERVER_DEVMENT_DIR}/.env.app'); exit(0);"
+RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_HOST','${DATABASE_HOST}','${SERVER_DEVMENT_DIR}/app.env'); exit(0);"
+RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_PORT','${DATABASE_PORT}','${SERVER_DEVMENT_DIR}/app.env'); exit(0);"
 
 # Run Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
