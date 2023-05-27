@@ -6,11 +6,12 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     container_name: ${DB_CONTAINER_NAME}
     volumes:
-      - "./db-dumps:/docker-entrypoint-initdb.d"
+      - ./db_dumps:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/mysql
     ports:
       - ${DB_HOST_PORT}:3306
     networks:
-      containers_network:
+      containers-network:
 
   www:
     depends_on:
@@ -26,8 +27,11 @@ services:
       - ${SERVER_HTTP_HOST_PORT}:80
       - ${SERVER_HTTPS_HOST_PORT}:443
     networks:
-      containers_network:
+      containers-network:
+
+volumes:
+  db-data:
 
 networks:
-  containers_network:
+  containers-network:
     driver: bridge

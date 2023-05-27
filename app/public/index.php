@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Helpers;
 use Dotenv\Dotenv;
+use App\EnvWriter;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../', 'app.env');
 $dotenv->safeLoad();

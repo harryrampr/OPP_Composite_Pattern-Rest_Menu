@@ -38,7 +38,10 @@ RUN apt-get install -y lsb-release ca-certificates apt-transport-https software-
 RUN apt-get install -y curl git unzip && \
     curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php && \
     HASH=`curl -sS https://composer.github.io/installer.sig` && \
-    php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { exit(0); } else { echo 'Error: Corrupted Composer Download', PHP_EOL; unlink('composer-setup.php'); exit(1); }" && \
+    php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { exit(0); } \
+    else \
+    { echo 'Error: Corrupted Composer Download', PHP_EOL; unlink('composer-setup.php'); \
+    exit(1); }" && \
     php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Add and set a development user
@@ -59,8 +62,12 @@ COPY --chown=devment:devment --chmod=0775 ./composer.json .
 COPY --chown=devment:devment --chmod=0775 app.env .
 
 # Update enviroment files on container
-RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_HOST','${DATABASE_HOST}','${SERVER_DEVMENT_DIR}/app.env'); exit(0);"
-RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/Helpers.php'; App\Helpers::SetEnv('DATABASE_PORT','${DATABASE_PORT}','${SERVER_DEVMENT_DIR}/app.env'); exit(0);"
+RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/EnvWriter.php'; \
+    (new App\EnvWriter('${SERVER_DEVMENT_DIR}/app.env'))->writeEnvVariable('DATABASE_HOST', '${DATABASE_HOST}'); \
+    exit(0);"
+RUN php -r "require_once '${SERVER_DEVMENT_DIR}/app/src/EnvWriter.php'; \
+    (new App\EnvWriter('${SERVER_DEVMENT_DIR}/app.env'))->writeEnvVariable('DATABASE_PORT', '${DATABASE_PORT}'); \
+    exit(0);"
 
 # Run Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
