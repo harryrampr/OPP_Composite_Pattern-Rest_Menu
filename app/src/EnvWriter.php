@@ -1,16 +1,37 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App;
 
+/**
+ * Class EnvWriter
+ *
+ * The EnvWriter class is responsible for writing environment variables to a .env file.
+ */
 class EnvWriter
 {
+    /**
+     * @var string The path to the .env file.
+     */
     private string $envFile;
 
+    /**
+     * EnvWriter constructor.
+     *
+     * @param string $envFile The path to the .env file. Default is __DIR__ . '/../../.env'.
+     */
     public function __construct(string $envFile = __DIR__ . '/../../.env')
     {
         $this->envFile = $envFile;
     }
 
+    /**
+     * Writes an environment variable to the .env file.
+     *
+     * @param string $key  The name of the environment variable.
+     * @param mixed $value The value of the environment variable.
+     *
+     * @return void
+     */
     public function writeEnvVariable(string $key, mixed $value): void
     {
         // Check if the file exists
