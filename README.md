@@ -1,8 +1,16 @@
 ## Project Templates for PHP Development
 
-### When coding with PHP, it's important to have project templates with the tools you use all the time.
+### When coding with PHP, it's important to have a good IDE and project templates with the tools you use all the time.
 
-#### We have curated a PhpStorm and php 8.1.x project template with the following features:
+[PhpStorm](https://www.jetbrains.com/phpstorm/) is the best IDE I have ever used. Worth every penny since it helps to
+improve your coding quality, saving a lot
+of time during development, testing and maintenance. If you aren't using PhpStorm, we encourage you to test it [free for
+30 days](https://www.jetbrains.com/phpstorm/download/#section=windows).
+
+We have curated project template for PHP 8.1.x development. You don't need PhpStorm to use the template, you may use it
+with any other IDE. Just remove the `.idea` folder containing PhpStorm configuration.
+
+#### Our template has the following features:
 
 - PhpStorm initial project setup
 - Project's basic file structure
@@ -16,7 +24,7 @@
 - Persistent data on db container
 - Support for Unit testing with coverage
 
-#### Just remove the word "sample" from the name of `.env` files and make suggested changes to the file's content.
+#### To configure the Docker LAMP, just remove `sample` from the name of `.env` files and make suggested changes to the file's content.
 
 1. For `.env` file, only replace values of:
     - `SERVER_HTTP_HOST_PORT`
