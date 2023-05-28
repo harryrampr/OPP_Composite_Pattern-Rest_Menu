@@ -7,8 +7,8 @@ improve your coding quality, saving a lot
 of time during development, testing and maintenance. If you aren't using PhpStorm, we encourage you to test it [free for
 30 days](https://www.jetbrains.com/phpstorm/download/#section=windows).
 
-We have curated project template for PHP 8.1.x development. You don't need PhpStorm to use the template, you may use it
-with any other IDE. Just remove the `.idea` folder containing PhpStorm configuration.
+We have curated project template for PHP 8.1.x development. You don't need PhpStorm to use our template, just remove
+the `.idea` folder containing PhpStorm configuration.
 
 #### Our template has the following features:
 
@@ -22,9 +22,9 @@ with any other IDE. Just remove the `.idea` folder containing PhpStorm configura
 - Docker LAMP for code testing
 - Support for initial db dump
 - Persistent data on db container
-- Support for Unit testing with coverage
+- Support for Unit testing with coverage report
 
-#### To configure the Docker LAMP, just remove `sample` from the name of `.env` files and make suggested changes to the file's content.
+#### To configure the Docker LAMP, just remove `sample` from the name of `.env` files. Then make the suggested changes to each file content.
 
 1. For `.env` file, only replace values of:
     - `SERVER_HTTP_HOST_PORT`
@@ -44,7 +44,7 @@ DATABASE_HOST
 and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for code testing, also
 allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
 
-#### Add any necessary SQLs dumps to the db_dumps folder, they will be imported on build to the db container.
+#### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of db container.
 
 #### You only need three Docker commands to build, run and stop the LAMP containers:
 
