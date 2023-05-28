@@ -1,4 +1,4 @@
-When programing with php, it's important to have project templates with the tools you use all the time.
+When coding with php, it's important to have project templates with the tools you use all the time.
 
 Here we have a template for phpStorm and php 8.1.x with the following features:
 
@@ -12,7 +12,7 @@ Here we have a template for phpStorm and php 8.1.x with the following features:
 - Docker LAMP for testing code
 - Persistent data on db container
 
-Just remove the word "sample" from the name of .env files and make appropriate changes to the files content.
+Just remove the word "sample" from the name of .env file's and make appropriate changes to the files content.
 
 At *.env* file, only replace values of:
 
@@ -30,11 +30,10 @@ At *app.env* file, replace values of:
 - DATABASE_DB_NAME
 
 **Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for DATABASE_HOST
-and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow to use Docker LAMP fot testing, also allows to
-use
-host machine's PHP and PhpStorm Build-in Preview without configuration problems.
+and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for testing, also allows
+using host machine's PHP and PhpStorm Build-in Preview without configuration problems.
 
-You may add any necessary SQLs dumps to the db-dumps folder, they will be imported on build to the db container.
+You may add any necessary SQLs dumps to the db_dumps folder, they will be imported on build to the db container.
 
 You only need three Docker commands to build, run and stop the LAMP containers:
 
