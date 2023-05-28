@@ -1,20 +1,16 @@
 ARG START_IMAGE_NAME=php
 ARG START_IMAGE_TAG='8.1.18-apache-buster'
 
+# Load image with Linux, Apache and PHP
 FROM ${START_IMAGE_NAME}:${START_IMAGE_TAG}
 
+# Set basic parameters
 ARG SERVER_DEVMENT_DIR=/var/www/dev
 ARG SERVER_PUBLIC_DIR=/var/www/dev/app/public
 ARG SERVER_PHP_INI_DIR=/usr/local/etc/php
 ARG SERVER_DEVMENT_USER=devment
 ARG DATABASE_HOST=db
 ARG DATABASE_PORT=3306
-
-
-# Save setting as ENV variables
-ENV SERVER_DEVMENT_DIR=${SERVER_DEVMENT_DIR}
-ENV SERVER_PUBLIC_DIR=${SERVER_PUBLIC_DIR}
-ENV SERVER_DEVMENT_USER=${SERVER_DEVMENT_USER}
 
 # Install important libraries
 RUN apt-get update && apt-get upgrade -y && \
