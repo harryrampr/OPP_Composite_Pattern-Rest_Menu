@@ -17,14 +17,24 @@ class EnvWriter
         if (file_exists($this->envFile)) {
             $envContent = file_get_contents($this->envFile);
 
-            $pattern = "/^{$key}=.*/m";
+            // Remove white space around equal sign in existing key-value pairs
+            $envContent = preg_replace('/\s*=\s*/', '=', $envContent);
 
-            if (preg_match($pattern, $envContent)) {
+            // Replace Windows-style line endings with Unix-style line endings
+            $envContent = preg_replace('/\r\n/', "\n", $envContent);
+
+            // Sanitize input
+            $key = trim($key);
+            $value = trim($value);
+
+            $searchPattern = "/^{$key}=.*/m";
+
+            if (preg_match($searchPattern, $envContent)) {
                 // If the key already exists, replace its value
-                $envContent = preg_replace($pattern, "{$key}={$value}", $envContent);
+                $envContent = preg_replace($searchPattern, "{$key}={$value}", $envContent);
             } else {
                 // If the key doesn't exist, append it to the end of the file
-                $envContent .= PHP_EOL . "{$key}={$value}";
+                $envContent .= "\n{$key}={$value}";
             }
         } else {
             // If the file doesn't exist, create the new content
