@@ -5,11 +5,22 @@ namespace Tests;
 use App\EnvWriter;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class EnvWriterTest
+ *
+ * Unit tests for the EnvWriter class.
+ */
 class EnvWriterTest extends TestCase
 {
+    /** @var string The path to the test .env file. */
     private string $envFile;
+
+    /** @var EnvWriter The instance of the EnvWriter class. */
     private EnvWriter $envWriter;
 
+    /**
+     * Test writing environment variable to the .env file.
+     */
     public function testWriteEnvVariable(): void
     {
         // Test writing a new key-value pair to an empty file
@@ -38,6 +49,9 @@ class EnvWriterTest extends TestCase
         $this->assertStringEqualsFile($this->envFile, "KEY=NEW_VALUE\nANOTHER_KEY=ANOTHER_VALUE\nTRIM_KEY=TRIM_VALUE\nSPECIAL_KEY=Some \"value\" with 'special' characters");
     }
 
+    /**
+     * Set up the test environment.
+     */
     protected function setUp(): void
     {
         $this->envFile = __DIR__ . '/test.env';
@@ -48,6 +62,9 @@ class EnvWriterTest extends TestCase
         $this->envWriter = new EnvWriter($this->envFile);
     }
 
+    /**
+     * Clean up the test environment.
+     */
     protected function tearDown(): void
     {
         // Clean up the test.env file after each test
