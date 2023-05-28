@@ -7,7 +7,7 @@ improve your coding quality, saving a lot
 of time during development, testing and maintenance. If you aren't using PhpStorm, we encourage you to test it [free for
 30 days](https://www.jetbrains.com/phpstorm/download/#section=windows).
 
-We have curated project template for PHP 8.1.x development. You don't need PhpStorm to use our template, just remove
+We have curated a project template for PHP 8.1.x development. You don't need PhpStorm to use our template, just remove
 the `.idea` folder containing PhpStorm configuration.
 
 #### Our template has the following features:
