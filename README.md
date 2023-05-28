@@ -1,18 +1,20 @@
-When coding with php, it's important to have project templates with the tools you use all the time.
+When coding with PHP, it's important to have project templates with the tools you use all the time.
 
-Here we have a template for phpStorm and php 8.1.x with the following features:
+We have curated a PhpStorm and php 8.1.x project template with the following features:
 
-- Basic phpStorm setup
-- Basic file structure for a project
-- Composer (latest)
-- Class autoload (using composer)
-- Xdebug3.x
+- Basic PhpStorm initial setup
+- Project's basic file structure
+- Composer Package Manager (latest)
+- File autoload (using composer)
+- Xdebug 3.x
 - phpUnit 9.x
 - MySQL (latest)
-- Docker LAMP for testing code
+- Docker LAMP for code testing
+- Support for initial data dump
 - Persistent data on db container
+- Support for Unit testing with coverage
 
-Just remove the word "sample" from the name of .env file's and make appropriate changes to the files content.
+Just remove the word "sample" from the name of .env files and make appropriate changes to the file's content.
 
 At *.env* file, only replace values of:
 
@@ -30,15 +32,15 @@ At *app.env* file, replace values of:
 - DATABASE_DB_NAME
 
 **Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for DATABASE_HOST
-and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for testing, also allows
-using host machine's PHP and PhpStorm Build-in Preview without configuration problems.
+and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for code testing, also
+allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.
 
 You may add any necessary SQLs dumps to the db_dumps folder, they will be imported on build to the db container.
 
 You only need three Docker commands to build, run and stop the LAMP containers:
 
-- docker compose build
-- docker compose up -d
-- docker compose down
+- `docker compose build`
+- `docker compose up -d`
+- `docker compose down`
 
-You may run these commands at phpStorm's Terminal or use the IDE's UI for the Docker Service.
+You may run these commands at PhpStorm's Terminal or use the IDE's UI for the Docker Service.
