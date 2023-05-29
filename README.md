@@ -29,7 +29,7 @@ the `.idea` folder containing PhpStorm configuration.
 1. For `.env` file, only replace values of:
     - `SERVER_HTTP_HOST_PORT`
     - `SERVER_HTTPS_HOST_PORT`
-    - `DB_HOST_PORT`
+    - `DB_CONTAINER_HOST_PORT`
     - `DB_ROOT_PASSWORD`
 
 2. For `app.env` file, replace values of:
@@ -41,7 +41,8 @@ the `.idea` folder containing PhpStorm configuration.
 
 ***Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for
 DATABASE_HOST
-and copy value of DB_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for code testing, also
+and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for code testing,
+also
 allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
 
 #### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of db container.
