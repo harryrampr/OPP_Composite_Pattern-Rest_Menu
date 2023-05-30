@@ -31,6 +31,8 @@ services:
 
 volumes:
   db-data:
+    name: ${DB_CONTAINER_VOLUME_NAME}
+    external: ${DB_CONTAINER_VOLUME_EXTERNAL}
 
 networks:
   containers-network:

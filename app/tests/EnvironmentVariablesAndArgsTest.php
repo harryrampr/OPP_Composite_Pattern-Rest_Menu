@@ -61,7 +61,7 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      *
      * @return void
      */
-    public function testDbHostPortEnvVarS(): void
+    public function testDbContainerHostPortEnvVarS(): void
     {
         $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
         $varValue = $_ENV['DB_CONTAINER_HOST_PORT'];
@@ -70,6 +70,22 @@ class EnvironmentVariablesAndArgsTest extends TestCase
         $this->assertNotNull($varValue);
         // .env file must contain DB_CONTAINER_HOST_PORT variable
         $this->assertStringContainsString('DB_CONTAINER_HOST_PORT=' . $varValue, $dotEnvFileContent);
+    }
+
+    /**
+     * Test if DB_CONTAINER_VOLUME_NAME environment variable is set at .env file
+     *
+     * @return void
+     */
+    public function testDbContainerVolumeNameEnvVarS(): void
+    {
+        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
+        $varValue = $_ENV['DB_CONTAINER_VOLUME_NAME'];
+
+        // Value must be set
+        $this->assertNotNull($varValue);
+        // .env file must contain DB_CONTAINER_VOLUME_NAME variable
+        $this->assertStringContainsString('DB_CONTAINER_VOLUME_NAME=' . $varValue, $dotEnvFileContent);
     }
 
     /**

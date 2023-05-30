@@ -19,38 +19,44 @@ the `.idea` folder containing PhpStorm configuration.
 - Xdebug 3.x
 - phpUnit 9.x
 - MySQL (latest)
-- Docker LAMP for code testing
-- Support for initial db dump
-- Persistent data on db container
-- Support for Unit testing with coverage report
+- [Docker Containers](https://www.docker.com/products/docker-desktop/) LAMP for code testing
+- Support for initial database dump
+- Persistent data on database container
+- Support for Unit Testing with Coverage Report
 
-#### To configure the Docker LAMP, just remove `sample` from the name of `.env` files. Then make the suggested changes to each file content.
+After downloading the template, go to PhpStorm Settings and select the `Default PHP Interpreter`. Also, setup `Composer`
+execs location.
 
-1. For `.env` file, only replace values of:
+Update necessary info at `composer.json` file, then run `composer install`.
+
+#### To configure the Docker LAMP, just copy sample `.env` files to new files without the "sample" prefix. Then only make important changes to the files content.
+
+1. For `.env` file, defaults should work. If necessary replace values of:
     - `SERVER_HTTP_HOST_PORT`
     - `SERVER_HTTPS_HOST_PORT`
     - `DB_CONTAINER_HOST_PORT`
     - `DB_ROOT_PASSWORD`
+    - `DB_CONTAINER_VOLUME_NAME`
+    - `DB_CONTAINER_VOLUME_EXTERNAL`
 
-2. For `app.env` file, replace values of:
-    - `DATABASE_HOST`
+2. For `app.env` file, most defaults should work. If necessary replace values of:
+    - `DATABASE_HOST`(Must update)
     - `DATABASE_PORT`
     - `DATABASE_USER_NAME`
     - `DATABASE_USER_PASSWORD`
     - `DATABASE_DB_NAME`
 
 ***Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for
-DATABASE_HOST
-and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for code testing,
-also
-allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
+DATABASE_HOST and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for
+code testing, also allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
+
+At this point you should run all PHPUnit tests located at `tests` folder.
 
 #### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of db container.
 
-#### You only need three Docker commands to build, run and stop the LAMP containers:
+Run these commands at PhpStorm's Terminal to start the containers.
 
 - `docker compose build`
 - `docker compose up -d`
-- `docker compose down`
 
-Run these commands at PhpStorm's Terminal or use the IDE's UI for the Docker Service.
+When necessary, run `docker compose down`to stop the containers.
