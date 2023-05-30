@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class TestContainerNeededFilesExist
  *
- * Test case to verify the existence of necessary folders and files at the project.
+ * Test case to verify the existence of necessary folders and files to create LAMP containers.
  */
 class TestContainerNeededFilesExist extends TestCase
 {

@@ -24,16 +24,13 @@ class EnvironmentVariablesAndArgsTest extends TestCase
     {
         // If this value is changed, ARG SERVER_DEVMENT_DIR at file www.Dockerfile must change too
         $expectedValue = '/var/www/dev';
-
-        $dockerfileContent = file_get_contents(__DIR__ . '/../../../www.Dockerfile');
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['SERVER_DEVMENT_DIR'];
 
         $this->assertEquals($expectedValue, $varValue);
         // .env file must contain SERVER_DEVMENT_DIR variable
-        $this->assertStringContainsString('SERVER_DEVMENT_DIR=' . $expectedValue, $dotEnvFileContent);
+        $this->assertStringContainsString('SERVER_DEVMENT_DIR=' . $expectedValue, $this->dotEnvFileContent);
         // www.Dockerfile file must contain SERVER_DEVMENT_DIR variable
-        $this->assertStringContainsString('ARG SERVER_DEVMENT_DIR=' . $expectedValue, $dockerfileContent);
+        $this->assertStringContainsString('ARG SERVER_DEVMENT_DIR=' . $expectedValue, $this->dockerfileContent);
     }
 
     /**
@@ -44,16 +41,14 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbHostNameEnvVarS(): void
     {
-        $dockerfileContent = file_get_contents(__DIR__ . '/../../../www.Dockerfile');
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_NAME'];
 
         // Value must equal to 'db', don't change this value
         $this->assertEquals('db', $varValue);
         // .env file must contain DB_CONTAINER_NAME variable
-        $this->assertStringContainsString('DB_CONTAINER_NAME=' . $varValue, $dotEnvFileContent);
+        $this->assertStringContainsString('DB_CONTAINER_NAME=' . $varValue, $this->dotEnvFileContent);
         // Value of ARG DATABASE_HOST must be the same of DB_CONTAINER_NAME
-        $this->assertStringContainsString('ARG DATABASE_HOST=' . $varValue, $dockerfileContent);
+        $this->assertStringContainsString('ARG DATABASE_HOST=' . $varValue, $this->dockerfileContent);
     }
 
     /**
@@ -63,13 +58,12 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbContainerHostPortEnvVarS(): void
     {
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_HOST_PORT'];
 
         // Value must be set
         $this->assertNotNull($varValue);
         // .env file must contain DB_CONTAINER_HOST_PORT variable
-        $this->assertStringContainsString('DB_CONTAINER_HOST_PORT=' . $varValue, $dotEnvFileContent);
+        $this->assertStringContainsString('DB_CONTAINER_HOST_PORT=' . $varValue, $this->dotEnvFileContent);
     }
 
     /**
@@ -79,13 +73,12 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbContainerVolumeNameEnvVarS(): void
     {
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_VOLUME_NAME'];
 
         // Value must be set
         $this->assertNotNull($varValue);
         // .env file must contain DB_CONTAINER_VOLUME_NAME variable
-        $this->assertStringContainsString('DB_CONTAINER_VOLUME_NAME=' . $varValue, $dotEnvFileContent);
+        $this->assertStringContainsString('DB_CONTAINER_VOLUME_NAME=' . $varValue, $this->dotEnvFileContent);
     }
 
     /**
@@ -98,6 +91,10 @@ class EnvironmentVariablesAndArgsTest extends TestCase
         // Load .env file variables.
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
         $dotenv->load();
-    }
 
+        // Store the file contents in properties for access in the test methods
+        $this->dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
+        $this->appDotEnvFileContent = file_get_contents(__DIR__ . '/../../../app.env');
+        $this->dockerfileContent = file_get_contents(__DIR__ . '/../../../www.Dockerfile');
+    }
 }
