@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\docker_containers;
 
 use App\EnvWriter;
 use PHPUnit\Framework\TestCase;

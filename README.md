@@ -29,14 +29,14 @@ execs location.
 
 Update necessary info at `composer.json` file, then run `composer install`.
 
-#### To configure the Docker LAMP, just copy sample `.env` files to new files without the "sample" prefix. Then only make important changes to the files content.
+#### To configure the Docker LAMP, just copy sample `.env` files to new files without the "sample" prefix. Then only make important changes to these files.
 
-1. For `.env` file, defaults should work. If necessary replace values of:
+1. For `.env` file, most defaults should work. If necessary replace values of:
     - `SERVER_HTTP_HOST_PORT`
     - `SERVER_HTTPS_HOST_PORT`
     - `DB_CONTAINER_HOST_PORT`
     - `DB_ROOT_PASSWORD`
-    - `DB_CONTAINER_VOLUME_NAME`
+    - `DB_CONTAINER_VOLUME_NAME`(Must update)
     - `DB_CONTAINER_VOLUME_EXTERNAL`
 
 2. For `app.env` file, most defaults should work. If necessary replace values of:
@@ -50,11 +50,11 @@ Update necessary info at `composer.json` file, then run `composer install`.
 DATABASE_HOST and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for
 code testing, also allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
 
-At this point you should run all PHPUnit tests located at `tests` folder.
+At this point you should run all PHPUnit tests located at `app/tests` folder.
 
-#### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of db container.
+#### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of database container.
 
-Run these commands at PhpStorm's Terminal to start the containers.
+To start the containers, run these commands at PhpStorm's Terminal.
 
 - `docker compose build`
 - `docker compose up -d`

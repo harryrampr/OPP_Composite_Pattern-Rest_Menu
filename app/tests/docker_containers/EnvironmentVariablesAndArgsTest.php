@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\docker_containers;
 
-use PHPUnit\Framework\TestCase;
 use Dotenv\Dotenv;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class EnvironmentVariablesTest
@@ -25,8 +25,8 @@ class EnvironmentVariablesAndArgsTest extends TestCase
         // If this value is changed, ARG SERVER_DEVMENT_DIR at file www.Dockerfile must change too
         $expectedValue = '/var/www/dev';
 
-        $dockerfileContent = file_get_contents(__DIR__ . '/../../www.Dockerfile');
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
+        $dockerfileContent = file_get_contents(__DIR__ . '/../../../www.Dockerfile');
+        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['SERVER_DEVMENT_DIR'];
 
         $this->assertEquals($expectedValue, $varValue);
@@ -44,8 +44,8 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbHostNameEnvVarS(): void
     {
-        $dockerfileContent = file_get_contents(__DIR__ . '/../../www.Dockerfile');
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
+        $dockerfileContent = file_get_contents(__DIR__ . '/../../../www.Dockerfile');
+        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_NAME'];
 
         // Value must equal to 'db', don't change this value
@@ -63,7 +63,7 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbContainerHostPortEnvVarS(): void
     {
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
+        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_HOST_PORT'];
 
         // Value must be set
@@ -79,7 +79,7 @@ class EnvironmentVariablesAndArgsTest extends TestCase
      */
     public function testDbContainerVolumeNameEnvVarS(): void
     {
-        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../.env');
+        $dotEnvFileContent = file_get_contents(__DIR__ . '/../../../.env');
         $varValue = $_ENV['DB_CONTAINER_VOLUME_NAME'];
 
         // Value must be set
@@ -96,7 +96,7 @@ class EnvironmentVariablesAndArgsTest extends TestCase
     protected function setUp(): void
     {
         // Load .env file variables.
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
         $dotenv->load();
     }
 

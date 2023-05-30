@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\docker_containers;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TestNeededFileStructureExist
+ * Class TestContainerNeededFilesExist
  *
  * Test case to verify the existence of necessary folders and files at the project.
  */
-class TestNeededFileStructureExist extends TestCase
+class TestContainerNeededFilesExist extends TestCase
 {
     /**
      * Test if the app/public directory exists at the root of the project.
@@ -19,7 +19,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testPublicDirectoryExists(): void
     {
-        $filePath = __DIR__ . '/../../app/public';
+        $filePath = __DIR__ . '/../../../app/public';
         $this->assertDirectoryExists($filePath);
     }
 
@@ -30,7 +30,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testDbDumpsDirectoryExists(): void
     {
-        $filePath = __DIR__ . '/../../db_dumps';
+        $filePath = __DIR__ . '/../../../db_dumps';
         $this->assertDirectoryExists($filePath);
     }
 
@@ -41,7 +41,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testDotEnvFileExists(): void
     {
-        $filePath = __DIR__ . '/../../.env';
+        $filePath = __DIR__ . '/../../../.env';
         $this->assertFileExists($filePath);
     }
 
@@ -52,29 +52,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testAppDotEnvFileExists(): void
     {
-        $filePath = __DIR__ . '/../../app.env';
-        $this->assertFileExists($filePath);
-    }
-
-    /**
-     * Test if the .gitignore file exists at the root of the project.
-     *
-     * @return void
-     */
-    public function testDotGitIgnoreFileExists(): void
-    {
-        $filePath = __DIR__ . '/../../.gitignore';
-        $this->assertFileExists($filePath);
-    }
-
-    /**
-     * Test if the composer.json file exists at the root of the project.
-     *
-     * @return void
-     */
-    public function testComposerJsonFileExists(): void
-    {
-        $filePath = __DIR__ . '/../../composer.json';
+        $filePath = __DIR__ . '/../../../app.env';
         $this->assertFileExists($filePath);
     }
 
@@ -85,7 +63,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testCustomPhpIniFileExists(): void
     {
-        $filePath = __DIR__ . '/../../custom-php.ini';
+        $filePath = __DIR__ . '/../../../custom-php.ini';
         $this->assertFileExists($filePath);
     }
 
@@ -96,7 +74,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testDockerComposeYmlFileExists(): void
     {
-        $filePath = __DIR__ . '/../../docker-compose.yml';
+        $filePath = __DIR__ . '/../../../docker-compose.yml';
         $this->assertFileExists($filePath);
     }
 
@@ -107,7 +85,7 @@ class TestNeededFileStructureExist extends TestCase
      */
     public function testWwwDockerfileExists(): void
     {
-        $filePath = __DIR__ . '/../../www.Dockerfile';
+        $filePath = __DIR__ . '/../../../www.Dockerfile';
         $this->assertFileExists($filePath);
     }
 
