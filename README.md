@@ -10,7 +10,7 @@ of time during development, testing and maintenance. If you aren't using PhpStor
 We have curated a project template for PHP 8.1.x development. You don't need PhpStorm to use our template, just remove
 the `.idea` folder containing PhpStorm configuration.
 
-#### Our template has the following features:
+#### Template Features:
 
 - PhpStorm initial project setup
 - Project's basic file structure
@@ -24,39 +24,45 @@ the `.idea` folder containing PhpStorm configuration.
 - Persistent data on database container
 - Support for Unit Testing with Coverage Report
 
-After downloading the template, go to PhpStorm Settings and select the `Default PHP Interpreter`. Also, setup `Composer`
-execs location.
+#### Installation:
 
-Update necessary info at `composer.json` file, then run `composer install`.
+1. After downloading the template, go to PhpStorm Settings and select the `Default PHP Interpreter`. Also,
+   setup `Composer`
+   execs location.
 
-#### To configure the Docker LAMP, just copy sample `.env` files to new files without the "sample" prefix. Then only make important changes to these files.
+2. Update necessary info at `composer.json` file, then run `composer install`.
 
-1. For `.env` file, most defaults should work. If necessary replace values of:
-    - `SERVER_HTTP_HOST_PORT`
-    - `SERVER_HTTPS_HOST_PORT`
-    - `DB_CONTAINER_HOST_PORT`
-    - `DB_ROOT_PASSWORD`
-    - `DB_CONTAINER_VOLUME_NAME`(Must update)
-    - `DB_CONTAINER_VOLUME_EXTERNAL`
+3. To configure the Docker LAMP, just copy sample `.env` files to new files without the "sample" prefix. Then only make
+   important changes to these files.
 
-2. For `app.env` file, most defaults should work. If necessary replace values of:
-    - `DATABASE_HOST`(Must update)
-    - `DATABASE_PORT`
-    - `DATABASE_USER_NAME`
-    - `DATABASE_USER_PASSWORD`
-    - `DATABASE_DB_NAME`
+    1. For `.env` file, most defaults should work. If necessary replace values of:
+        - `SERVER_HTTP_HOST_PORT`
+        - `SERVER_HTTPS_HOST_PORT`
+        - `DB_CONTAINER_HOST_PORT`
+        - `DB_ROOT_PASSWORD`
+        - `DB_CONTAINER_VOLUME_NAME`(Must update)
+        - `DB_CONTAINER_VOLUME_EXTERNAL`
 
-***Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for
-DATABASE_HOST and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP for
-code testing, also allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
+    2. For `app.env` file, most defaults should work. If necessary replace values of:
+        - `DATABASE_HOST`(Must update)
+        - `DATABASE_PORT`
+        - `DATABASE_USER_NAME`
+        - `DATABASE_USER_PASSWORD`
+        - `DATABASE_DB_NAME`
 
-At this point you should run all PHPUnit tests located at `app/tests` folder.
+   ***Note:** On Windows, use host machine's [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) IP for
+   DATABASE_HOST and copy value of DB_CONTAINER_HOST_PORT to DATABASE_PORT. These changes will allow using Docker LAMP
+   for
+   code testing, also allows using host machine's PHP and PhpStorm Build-in Preview without any configuration problems.*
 
-#### Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of database container.
+4. Run all PHPUnit tests located at `app/tests` folder to verify template & containers configuration.
 
-To start the containers, run these commands at PhpStorm's Terminal.
+5. Add any necessary SQL dumps to the db_dumps folder, they will be imported during the building stage of database
+   container.
 
-- `docker compose build`
-- `docker compose up -d`
+6. To start the LAMP containers, run these commands at IDE's Terminal.
 
-When necessary, run `docker compose down`to stop the containers.
+    - `docker compose build`
+    - `docker compose up -d`
+
+7. When necessary, run `docker compose down`to stop the containers.
