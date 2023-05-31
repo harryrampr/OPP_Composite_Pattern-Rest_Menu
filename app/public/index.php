@@ -1,13 +1,18 @@
 <?php declare(strict_types=1);
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\Helpers;
-use Dotenv\Dotenv;
-use App\EnvWriter;
-
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../', 'app.env');
-$dotenv->safeLoad();
-
-echo '<h1>Hello World!</h1>';
-Helpers::showText("test text...");
-echo "<h5>{$_ENV['DATABASE_PORT']}</h5>";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPP Composite Pattern - Restaurant Menu Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container m-6">
+    <?php require_once __DIR__.'/../src/runMenu.php';?>
+</div>
+</body>
+</html>

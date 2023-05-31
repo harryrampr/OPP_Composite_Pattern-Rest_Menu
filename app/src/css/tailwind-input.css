@@ -1,0 +1,23 @@
+@tailwind base;
+@layer base {
+    h1 {
+        @apply text-xl;
+        @apply font-medium;
+        @apply mb-3;
+        @apply mt-7;
+    }
+    h2 {
+        @apply text-lg;
+        @apply mt-2;
+    }
+    h3  {
+        @apply text-lg;
+    }
+    li {
+        @apply text-lg;
+        @apply mt-2;
+        @apply ml-2;
+    }
+}
+@tailwind components;
+@tailwind utilities;
