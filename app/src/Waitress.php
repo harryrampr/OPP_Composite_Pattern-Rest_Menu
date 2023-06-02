@@ -26,8 +26,7 @@ class Waitress
         $transverseIterator = new RecursiveIteratorIterator($arrayIterator,
             RecursiveIteratorIterator::SELF_FIRST);
 
-        echo sprintf('%sVEGETARIAN MENU%s', PHP_EOL, PHP_EOL);
-        echo '---------------------', PHP_EOL;
+        echo sprintf('<h1>VEGETARIAN MENU</h1>%s', PHP_EOL);
 
         while ($transverseIterator->valid()) {
             $element = $transverseIterator->current();
